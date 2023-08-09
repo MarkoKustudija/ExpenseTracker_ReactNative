@@ -33,6 +33,7 @@ function ExpenseForm({ submitButtonLabel, onSubmit, onCancel, defaultValues }) {
   }
 
   function submitHandler() {
+
     const expenseData = {
       amount: +inputValues.amount.value,
       date: new Date(inputValues.date.value),
@@ -60,7 +61,7 @@ function ExpenseForm({ submitButtonLabel, onSubmit, onCancel, defaultValues }) {
     onSubmit(expenseData);
   }
 
-  const formIsInvalid =
+  const formIsNotValid =
     !inputValues.amount.isValid ||
     !inputValues.date.isValid ||
     !inputValues.description.isValid;
@@ -101,7 +102,7 @@ function ExpenseForm({ submitButtonLabel, onSubmit, onCancel, defaultValues }) {
           value: inputValues.description.value,
         }}
       />
-      {formIsInvalid && (
+      {formIsNotValid && (
         <Text style={styles.errorText}>
           Invalid input values - please check your entered data!
         </Text>
